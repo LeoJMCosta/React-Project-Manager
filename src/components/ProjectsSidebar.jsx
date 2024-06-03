@@ -24,7 +24,6 @@ export default function ProjectsSidebar({
           } else {
             cssClasses += " text-stone-400";
           }
-
           return (
             <li key={project.id}>
               <button
