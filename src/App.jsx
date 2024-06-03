@@ -1,8 +1,9 @@
 import { useState } from "react";
-import NewProject from "./components/NewProject";
-import NoProjectSelected from "./components/NoProjectSelected";
-import ProjectsSidebar from "./components/ProjectsSidebar";
-import SelectedProject from "./components/SelectedProject";
+
+import NewProject from "./components/NewProject.jsx";
+import NoProjectSelected from "./components/NoProjectSelected.jsx";
+import ProjectsSidebar from "./components/ProjectsSidebar.jsx";
+import SelectedProject from "./components/SelectedProject.jsx";
 
 function App() {
   const [projectsState, setProjectsState] = useState({
@@ -15,7 +16,7 @@ function App() {
     setProjectsState((prevState) => {
       const taskId = Math.random();
       const newTask = {
-        text: text, // Corrected typo
+        text: text,
         projectId: prevState.selectedProjectId,
         id: taskId,
       };
@@ -27,11 +28,11 @@ function App() {
     });
   }
 
-  function handleDeleteTask(taskId) {
+  function handleDeleteTask(id) {
     setProjectsState((prevState) => {
       return {
         ...prevState,
-        tasks: prevState.tasks.filter((task) => task.id !== taskId),
+        tasks: prevState.tasks.filter((task) => task.id !== id),
       };
     });
   }
@@ -119,7 +120,7 @@ function App() {
         onStartAddProject={handleStartAddProject}
         projects={projectsState.projects}
         onSelectProject={handleSelectProject}
-        selectedProjectId={projectsState.selectedProjectId} // Added this prop
+        selectedProjectId={projectsState.selectedProjectId}
       />
       {content}
     </main>
